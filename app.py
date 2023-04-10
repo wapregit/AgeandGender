@@ -101,25 +101,32 @@ if photo:
         gender_net.setInput(blob)
         gender_pred_list = gender_net.forward()
         gender = gender_classes[gender_pred_list[0].argmax()]
-        st.write(f"Gender : {gender}, Confidence = {gender_pred_list[0].max() * 100}%")
+        st.write(f"Gender : {gender}, [Confidence = {gender_pred_list[0].max() * 100:.3f}%]")
 
         age_net.setInput(blob)
         age_pred_list = age_net.forward()
         age = age_classes[age_pred_list[0].argmax()]
-        st.write(f"{age}, Confidence = {age_pred_list[0].max() * 100:.3f}%")
+        st.write(f"{age}, [Confidence = {age_pred_list[0].max() * 100:.3f}%]")
 
-        label = "{},{}".format(gender, age)
+        label = "{}, {}".format(gender, age)
         cv2.putText(
             frameFace,
             label,
             (bbox[0],
             bbox[1] - 10),
-            cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2,
-            cv2.LINE_AA)
+            cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv2.LINE_AA)
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.write(' ')
+        
+        with col2:
+            st.image(frameFace)
 
-        st.image(frameFace)
+        with col3:
+            st.write(' ')
+
         st.sidebar.header("บันทึกข้อมูลลงในฐานข้อมูล")
-
         df = pd.read_csv("data/test.csv")
         st.sidebar.table(df)
         options_form = st.sidebar.form("options_form")
