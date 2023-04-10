@@ -81,7 +81,7 @@ if photo:
     gender_model_path="gender_net.caffemodel"
 
     MODEL_MEAN_VALUE = (78.4263377603, 87.7689143744, 114.895847746)
-    age_classes = ['Age: 1-2', 'Age: 3-5', 'Age: 6-14', 'Age: 15-22', 'Age: 25-30', 'Age: 32-40', 'Age: 45-50', 'Age: Greater than 50']
+    age_classes = ['Age: 1-2', 'Age: 3-5', 'Age: 6-14', 'Age: 15-22', 'Age: 23-30', 'Age: 31-40', 'Age: 41-50', 'Age: Greater than 50']
     gender_classes = ['Male', 'Female']
 
     age_net = cv2.dnn.readNet(age_model_path, age_txt_path)
