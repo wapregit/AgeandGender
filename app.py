@@ -116,15 +116,7 @@ if photo:
             bbox[1] - 10),
             cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv2.LINE_AA)
         
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.write(' ')
-        
-        with col2:
-            st.image(frameFace)
-
-        with col3:
-            st.write(' ')
+        st.image(frameFace)
 
         st.sidebar.header("บันทึกข้อมูลลงในฐานข้อมูล")
         df = pd.read_csv("data/test.csv")
