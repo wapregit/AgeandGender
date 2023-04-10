@@ -101,13 +101,12 @@ if photo:
         gender_net.setInput(blob)
         gender_pred_list = gender_net.forward()
         gender = gender_classes[gender_pred_list[0].argmax()]
-        st.write(
-            f"Gender : {gender}, confidence = {gender_pred_list[0].max() * 100}%")
+        st.write(f"Gender : {gender}, Confidence = {gender_pred_list[0].max() * 100}%")
 
         age_net.setInput(blob)
         age_pred_list = age_net.forward()
         age = age_classes[age_pred_list[0].argmax()]
-        st.write(f"Age : {age}, confidence = {age_pred_list[0].max() * 100}%")
+        st.write(f"{age}, Confidence = {age_pred_list[0].max() * 100:.3f}%")
 
         label = "{},{}".format(gender, age)
         cv2.putText(
@@ -137,8 +136,8 @@ if photo:
             st.sidebar.header("บันทึกข้อมูลสำเร็จ")
             
         im_pil = Image.fromarray(frameFace)
-        im_pil.save('Result.jpeg')
-        with open("Result.jpeg", "rb") as file:
+        im_pil.save('result.jpeg')
+        with open("result.jpeg", "rb") as file:
                 btn = st.download_button( 
                         label="ดาวน์โหลดรูปภาพ",
                         data=file,
