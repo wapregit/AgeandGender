@@ -67,7 +67,7 @@ if bytes_data is None:
     st.stop()
     
 if photo:
-    image = Image.open(photo) #เปิดใช้ photo
+    image = Image.open(photo)
     cap = np.array(image)
     cv2.imwrite('temp.jpg', cv2.cvtColor(cap, cv2.COLOR_BGR2GRAY))
     cap=cv2.imread('temp.jpg')
