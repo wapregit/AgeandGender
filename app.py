@@ -48,7 +48,7 @@ class Detectface():
         return opencv_dnn_frame, b_boxes_detect
 
 st.write("# Age and Gender prediction "+":robot_face:") 
-st.write("## Upload a picture that contains a face "+":camera:")
+st.write("### Upload a picture that contains a face "+":camera:")
 
 bytes_data = None 
 input_mode = st.radio("# Input mode", ["Camera", "File upload"]) 
@@ -156,6 +156,7 @@ if photo:
                     st.write("คุณยังไม่ได้ทำการดาวน์โหลดรูปภาพ")
                     
         if add_data is not None :
+            st.write('------------------------------------------------------------------------------------')
             st.write('กราฟเพศและอายุของผู้ใช้งานทั้งหมด')
             df2 = df.filter(regex= '(gender|age)', axis=1)
             st.line_chart(df2)
