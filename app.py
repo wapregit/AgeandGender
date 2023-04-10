@@ -81,7 +81,7 @@ if photo:
     gender_model_path="gender_net.caffemodel"
 
     MODEL_MEAN_VALUE = (78.4263377603, 87.7689143744, 114.895847746)
-    age_classes = ['Age: 1-2', 'Age: 3-5', 'Age: 6-14', 'Age: 15-22', 'Age: 25-30', 'Age: 32-40', 'Age: 45-50', 'Age: age is greater than 50']
+    age_classes = ['Age: 1-2', 'Age: 3-5', 'Age: 6-14', 'Age: 15-22', 'Age: 25-30', 'Age: 32-40', 'Age: 45-50', 'Age: Greater than 50']
     gender_classes = ['Male', 'Female']
 
     age_net = cv2.dnn.readNet(age_model_path, age_txt_path)
@@ -122,7 +122,7 @@ if photo:
 
         df = pd.read_csv("data/test.csv")
         st.sidebar.table(df)
-        options_form = st.sidebar.form("option_form")
+        options_form = st.sidebar.form("options_form")
         add_name = options_form.text_input("โปรดใส่ชื่อของคุณ")
         now = datetime.now()
         user_time = now.strftime("%H:%M:%S")
