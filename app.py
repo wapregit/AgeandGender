@@ -6,7 +6,6 @@ from PIL import Image
 from datetime import datetime
 from deta import Deta
 
-
 TOKEN = "DFkZoYTZ_9o6Tz58g3xESNSnz7PnWY6kSEKKT8NWH"
 deta = Deta(TOKEN)
 db = deta.Base("imagesdata") 
@@ -114,8 +113,9 @@ if photo:
             label,
             (bbox[0],
             bbox[1] - 10),
-            cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, cv2.LINE_AA)
-        
+            cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2, 
+            cv2.LINE_AA)
+
         st.image(frameFace)
 
         st.sidebar.header("บันทึกข้อมูลลงในฐานข้อมูล")
@@ -128,7 +128,7 @@ if photo:
         add_data = options_form.form_submit_button("บันทึกข้อมูล")
 
         if add_data:
-            new_data = {"name": add_name , "gender": gender ,"age": age ,"time": user_time}
+            new_data = {"name": add_name, "gender": gender, "age": age, "time": user_time}
             df = df.append(new_data, ignore_index = True)
             df.to_csv("data/test.csv" , index = False)
             insert_imagesdata(add_name,gender,age,user_time)
